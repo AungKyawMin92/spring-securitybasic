@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: mm.com.springboot.oauthsecurity.ak.SpringbootOauthsecurityApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.449 s - in mm.com.springboot.oauthsecurity.ak.SpringbootOauthsecurityApplicationTests

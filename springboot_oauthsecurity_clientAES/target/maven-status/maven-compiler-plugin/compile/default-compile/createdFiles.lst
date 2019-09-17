@@ -1,0 +1,13 @@
+mm\com\springboot\oauthsecurity\ak\config\WebSecurity.class
+mm\com\springboot\oauthsecurity\ak\ServletInitializer.class
+mm\com\springboot\oauthsecurity\ak\repository\RoleRepository.class
+mm\com\springboot\oauthsecurity\ak\service\CustomUserDetailServiceImpl.class
+mm\com\springboot\oauthsecurity\ak\repository\UserRepository.class
+mm\com\springboot\oauthsecurity\ak\entity\RoleEntity.class
+mm\com\springboot\oauthsecurity\ak\config\ResourceServer.class
+mm\com\springboot\oauthsecurity\ak\config\AuthServer.class
+mm\com\springboot\oauthsecurity\ak\entity\AuthUserDetail.class
+mm\com\springboot\oauthsecurity\ak\controller\HomeController.class
+mm\com\springboot\oauthsecurity\ak\SpringbootOauthsecurityApplication.class
+mm\com\springboot\oauthsecurity\ak\entity\BaseEntity.class
+mm\com\springboot\oauthsecurity\ak\entity\UserEntity.class
