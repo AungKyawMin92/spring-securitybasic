@@ -1,0 +1,2 @@
+2019-07-23 09:38:25,594 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-23 09:38:57,092 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 35.935 seconds (JVM running for 41.393)

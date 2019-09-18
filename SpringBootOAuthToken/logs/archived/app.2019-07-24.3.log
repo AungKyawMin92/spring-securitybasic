@@ -1,0 +1,73 @@
+2019-07-24 10:50:28,378 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 27.89 seconds (JVM running for 30.816)
+2019-07-24 10:52:22,401 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 10:52:40,804 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 21.499 seconds (JVM running for 24.421)
+2019-07-24 10:56:12,302 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 10:56:32,538 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 23.535 seconds (JVM running for 26.368)
+2019-07-24 10:57:33,227 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 10:57:53,933 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 24.12 seconds (JVM running for 27.374)
+2019-07-24 10:59:28,522 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 10:59:48,775 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 23.058 seconds (JVM running for 25.7)
+2019-07-24 11:18:20,557 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 11:18:40,598 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 23.443 seconds (JVM running for 26.687)
+2019-07-24 11:25:46,653 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 11:26:01,719 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 17.777 seconds (JVM running for 20.425)
+2019-07-24 11:29:44,674 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 11:29:59,487 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] Started SpringBootOAuthTokenApplication in 17.162 seconds (JVM running for 19.505)
+2019-07-24 11:50:45,472 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default
+2019-07-24 11:51:00,881 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.NoClassDefFoundError: org/springframework/security/oauth2/client/web/OAuth2LoginAuthenticationFilter
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:627)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:456)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1321)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:307)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:843)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.boot.oauth.SpringBootOAuthTokenApplication.main(SpringBootOAuthTokenApplication.java:26)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.NoClassDefFoundError: org/springframework/security/oauth2/client/web/OAuth2LoginAuthenticationFilter
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	... 21 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/springframework/security/oauth2/client/web/OAuth2LoginAuthenticationFilter
+	at org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer.init(OAuth2LoginConfigurer.java:425)
+	at org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer.init(OAuth2LoginConfigurer.java:132)
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:371)
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:325)
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:41)
+	at org.springframework.security.config.annotation.web.builders.WebSecurity.performBuild(WebSecurity.java:294)
+	at org.springframework.security.config.annotation.web.builders.WebSecurity.performBuild(WebSecurity.java:79)
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:334)
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:41)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:104)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$$EnhancerBySpringCGLIB$$ece2cad8.CGLIB$springSecurityFilterChain$1(<generated>)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$$EnhancerBySpringCGLIB$$ece2cad8$$FastClassBySpringCGLIB$$eecfed68.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$$EnhancerBySpringCGLIB$$ece2cad8.springSecurityFilterChain(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 22 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 42 common frames omitted
+2019-07-24 11:57:47,832 INFO com.boot.oauth.SpringBootOAuthTokenApplication [main] No active profile set, falling back to default profiles: default

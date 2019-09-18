@@ -1,0 +1,26 @@
+server:
+  port : 8081
+spring:  
+  application:
+    name: Vanilla
+  datasource:
+    url:  jdbc:h2:file:~/oauth
+    username: sa
+    password: 123
+    driver-class-name:  org.h2.Driver
+security:
+    user:
+      password: password
+    oauth2:
+      resource:
+        filter-order: 3
+        
+        
+#logging:
+#  level:
+#    org.springframework: ERROR
+#    com.boot.oauth: DEBUG
+#  pattern:
+#    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+#    file: "%d %p %c{1.} [%t] %m%n"
+#  file: app.log
