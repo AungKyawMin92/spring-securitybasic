@@ -1,5 +1,8 @@
 package mm.com.springboot.oauthjwtsecurity.ak.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +16,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableWebSecurity
@@ -23,6 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Value("${security.token.signing-key}")
 	private String jwt_signingKey;
+	
+	@Autowired 
+	private DataSource dataSource;// for token store in db
 	
 	@Bean
 	@Override
@@ -53,20 +60,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		converter.setSigningKey(jwt_signingKey);
 		return converter;
 	}
-
+		
 	@Bean
-	public TokenStore tokenStore() {
-		return new JwtTokenStore(accessTokenConverter());
-	}
+    TokenStore jdbcTokenStore() {
+        return new JdbcTokenStore(dataSource);
+	//	return new InMemoryTokenStore();
+    }
 
 	@Bean
 	@Primary
 	public DefaultTokenServices tokenServices() {
 		DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-		defaultTokenServices.setTokenStore(tokenStore());
-		defaultTokenServices.setSupportRefreshToken(true);
-		defaultTokenServices.setAccessTokenValiditySeconds(50);//can change token valid sec
-		defaultTokenServices.setRefreshTokenValiditySeconds(50);
+		defaultTokenServices.setTokenStore(jdbcTokenStore());
+		defaultTokenServices.setSupportRefreshToken(false);
+	//	defaultTokenServices.setAccessTokenValiditySeconds(50);//can change token valid sec
+	//	defaultTokenServices.setRefreshTokenValiditySeconds(50);
 		return defaultTokenServices;
 	}    
 }

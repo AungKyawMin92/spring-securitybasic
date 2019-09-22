@@ -6,7 +6,6 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -16,7 +15,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 @Configuration
@@ -42,8 +40,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	private String resourceIds;
 
 	//comment for inMemoryTokenStore
-	/*@Autowired
-	private TokenStore tokenStore;*/
+	@Autowired
+	private TokenStore tokenStore;
 
 	@Autowired
 	private JwtAccessTokenConverter accessTokenConverter;
@@ -52,21 +50,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	private AuthenticationManager authenticationManager;
 	
 	@Autowired private DataSource dataSource;// for token store in db
-	@Bean
-    TokenStore jdbcTokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
-	
+		
 	@Override
 	public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
-		configurer.jdbc(dataSource)
-		       // .inMemory()
+		configurer//.jdbc(dataSource)
+		        .inMemory()
 		        .withClient(clientId)
 				.secret(clientSecret)
-		        .authorizedGrantTypes(grantType, "refresh_token")
+		        .authorizedGrantTypes(grantType)
 		        .scopes(scopeRead, scopeWrite)
-		        .accessTokenValiditySeconds(25)
-		        .refreshTokenValiditySeconds(25)
+		        .accessTokenValiditySeconds(95)
+		    //    .refreshTokenValiditySeconds(95)
 		        .resourceIds(resourceIds);
 	}
 
@@ -75,7 +69,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
 		enhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
 		endpoints.pathMapping("/oauth/token", "/mr.bean/access");
-		endpoints.tokenStore(jdbcTokenStore())
+		endpoints.tokenStore(tokenStore)
 		        .accessTokenConverter(accessTokenConverter)
 		        .tokenEnhancer(enhancerChain)
 		        .authenticationManager(authenticationManager);
